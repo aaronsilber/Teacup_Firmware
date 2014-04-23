@@ -506,6 +506,14 @@ drops PID loop from heater control, reduces code size significantly (1300 bytes!
 may allow DEBUG on '168
 */
 // #define	BANG_BANG
+/** \def PID_CONDITIONAL_INTEGRATION
+  PID_CONDITIONAL_INTEGRATION
+        Controls 'integral windup' by preventing the integral term from accumulating error if the heater output is saturated high/low by
+        the other terms in the PID calculation.  This is in addition to M133/I_LIMIT mechanism, and can help prevent overshoot in cases of
+        large setpoint changes which may overfill the integral term.
+        Costs 50 bytes.
+*/
+#define PID_CONDITIONAL_INTEGRATION
 /** \def BANG_BANG_ON
 BANG_BANG_ON
 PWM value for 'on'
